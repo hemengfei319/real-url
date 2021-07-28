@@ -4,13 +4,19 @@
 
 import asyncio
 import danmaku
+import mcpi.minecraft as minecraft
+
 
 
 async def printer(q):
     while True:
         m = await q.get()
         if m['msg_type'] == 'danmaku':
-            print(f'{m["name"]}：{m["content"]}')
+            mc = minecraft.Minecraft.create(port = 4712)
+            if m["content"] != Null:
+                pos = mc.player.getTilePos()
+                mc.summon Pig pos.x pos.y pos.z {CustomName:"武如烟"}
+                mc.postToChat(f'{m["name"]}：{m["content"]}')
 
 
 async def main(url):
